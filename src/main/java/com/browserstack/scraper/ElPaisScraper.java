@@ -45,7 +45,7 @@ public class ElPaisScraper {
         executor.invokeAll(tasks);
         executor.shutdown();
         executor.awaitTermination(3, TimeUnit.MINUTES);
-        System.out.println("✅ Scraping finished. Output saved to elpais_output.csv");
+        System.out.println(" Scraping finished. Output saved to elpais_output.csv");
     }
 
     public static void scrape(Capabilities caps) {
@@ -60,7 +60,7 @@ public class ElPaisScraper {
                 WebElement opinionLink = driver.findElement(By.xpath("//a[contains(text(), 'Opinión')]"));
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", opinionLink);
             } catch (Exception e) {
-                System.out.println("❌ Couldn't find Opinión link");
+                System.out.println("Couldn't find Opinión link");
                 return;
             }
 
@@ -100,7 +100,7 @@ public class ElPaisScraper {
 
             findRepeatedWords(translatedTitles, repeatedWords);
             saveCSV(rows);
-            System.out.println("🔁 Repeated words: " + repeatedWords);
+            System.out.println(" Repeated words: " + repeatedWords);
 
         } catch (Exception e) {
             e.printStackTrace();
